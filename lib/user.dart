@@ -4,77 +4,70 @@
 class User{
   String name;
   String email;
-  String molibe;
+  String mobile;
   String gender;
-  String course;
+  String courses;
   String address;
-
 
 //<editor-fold desc="Data Methods">
 
   User({
     required this.name,
     required this.email,
-    required this.molibe,
-    required this.address,
+    required this.mobile,
     required this.gender,
-    required this.course,
-
+    required this.courses,
+    required this.address,
   });
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          (other is User &&
-              runtimeType == other.runtimeType &&
-              name == other.name &&
-              email == other.email &&
-              molibe == other.molibe &&
-              address == other.address &&
-              gender == other.gender &&
-
-              course == other.course);
+      (other is User &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          email == other.email &&
+          mobile == other.mobile &&
+          gender == other.gender &&
+          courses == other.courses &&
+          address == other.address);
 
   @override
   int get hashCode =>
       name.hashCode ^
       email.hashCode ^
-      molibe.hashCode ^
-      address.hashCode ^
+      mobile.hashCode ^
       gender.hashCode ^
-
-      course.hashCode;
+      courses.hashCode ^
+      address.hashCode;
 
   @override
   String toString() {
     return 'User{' +
-        ' username: $name,' +
+        ' name: $name,' +
         ' email: $email,' +
-        ' molibe: $molibe,' +
-        ' address: $address,' +
+        ' mobile: $mobile,' +
         ' gender: $gender,' +
-
-        ' course: $course,' +
+        ' courses: $courses,' +
+        ' address: $address,' +
         '}';
   }
 
   User copyWith({
     String? name,
     String? email,
-    String? molibe,
-    String? address,
+    String? mobile,
     String? gender,
-
-    String? course,
+    String? courses,
+    String? address,
   }) {
     return User(
       name: name ?? this.name,
       email: email ?? this.email,
-      molibe: molibe ?? this.molibe,
-      address: address ?? this.address,
+      mobile: mobile ?? this.mobile,
       gender: gender ?? this.gender,
-
-      course: course ?? this.course,
+      courses: courses ?? this.courses,
+      address: address ?? this.address,
     );
   }
 
@@ -82,11 +75,10 @@ class User{
     return {
       'name': this.name,
       'email': this.email,
-      'molibe': this.molibe,
-      'address': this.address,
+      'mobile': this.mobile,
       'gender': this.gender,
-
-      'course': this.course,
+      'courses': this.courses,
+      'address': this.address,
     };
   }
 
@@ -94,11 +86,10 @@ class User{
     return User(
       name: map['name'] as String,
       email: map['email'] as String,
-      molibe: map['molibe'] as String,
-      address: map['address'] as String,
+      mobile: map['mobile'] as String,
       gender: map['gender'] as String,
-
-      course: map['course'] as String,
+      courses: map['courses'] as String,
+      address: map['address'] as String,
     );
   }
 

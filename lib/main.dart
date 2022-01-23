@@ -36,7 +36,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextEditingController mobileController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
-  TextEditingController coursesController = TextEditingController();
+
   TextEditingController addressController = TextEditingController();
   // int gender = 0;
   var _gender ;
@@ -189,14 +189,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     print(_gender);
 
 
-                    String name = nameController.value.toString();
-                    String email = emailController.value.toString();
-                    String mobile = mobileController.value.toString();
-                    String address = addressController.value.toString();
+                    String name = nameController.text.toString();
+                    String email = emailController.text.toString();
+                    String mobile = mobileController.text.toString();
+                    String address = addressController.text.toString();
                     // String gen = gender == 0? 'Male': 'Female';
 
 
-
+                    User user = new User(
+                      address:address,
+                      courses: selectedCourseType,
+                      email: email ,
+                      gender: _gender,
+                      mobile: mobile,
+                      name: name
+                    );
                     fetchResult(user).then((res) {
 
                       print(res.body.toString());
@@ -229,7 +236,7 @@ Future<http.Response> fetchResult(User user) async {
   };
 
   final response = await http
-      .post(Uri.parse('http://localhost:8081/signup'),headers: requestHeaders,body: jsonEncode(user.toMap()));
+      .post(Uri.parse('http://localhost:8081/student/save'),headers: requestHeaders,body: jsonEncode(user.toMap()));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -243,4 +250,3 @@ Future<http.Response> fetchResult(User user) async {
 }
 
 
-}
